@@ -1,0 +1,8 @@
+## Interface: 11200
+## Title: AZS Build Book
+## Notes: In-game class build guides (talents, cards, jewelry). /azsbuild
+## SavedVariables: AZSBuildBookDB
+## Version: 1.0
+
+Builds.lua
+AZSBuildBook.lua
