@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Sora", system-ui, sans-serif;
+  --color-bg0: #070605;
+  --color-bg1: #12100c;
+  --color-gold: #f0c56a;
+  --color-gold-deep: #c9922e;
+  --color-gold-dim: #a8884a;
+  --color-brd: rgba(240, 197, 106, 0.18);
+  --color-parchment: #f3ebe0;
+  --color-muted: #9e9485;
+  --color-ink: #120e08;
+  --color-danger: #ffb4a4;
+  --color-surface: rgba(255, 248, 235, 0.035);
+  --color-surface-2: rgba(255, 248, 235, 0.06);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    font-family: var(--font-sans);
+    color: var(--color-parchment);
+    background-color: var(--color-bg0);
+    background-image:
+      radial-gradient(ellipse 90% 55% at 50% -10%, rgba(201, 146, 58, 0.2), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 100% 20%, rgba(90, 40, 20, 0.25), transparent 50%),
+      radial-gradient(ellipse 40% 35% at 0% 80%, rgba(60, 45, 20, 0.2), transparent 45%),
+      linear-gradient(180deg, #0e0c09 0%, var(--color-bg0) 40%, #050403 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(240, 197, 106, 0.35) transparent;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-rise-delay {
+  animation: rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+@utility animate-rise-late {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+@utility animate-fade {
+  animation: fade-in 0.35s ease both;
+}
+
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-late,
+  .animate-fade {
+    animation: none;
+  }
+}

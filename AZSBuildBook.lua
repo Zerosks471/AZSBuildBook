@@ -13,8 +13,13 @@ M.PAGE = 1
 M.classIdx = 1
 M.buildId = nil
 M.frame = nil
+M.launcher = nil
+M.escBtn = nil
+M.escInjected = nil
+M.inited = nil
 M.rows = {}
 M.PAGES = { "Overview", "Talents", "Cards", "Jewelry" }
+M.ADDON = "AZSBuildBook"
 
 M.C = {
 	gold = { 1.00, 0.86, 0.50 },
@@ -79,6 +84,20 @@ function M.listLen(t)
 	return n
 end
 
+function M.ensureDB()
+	if type(AZSBuildBookDB) ~= "table" then
+		AZSBuildBookDB = {}
+	end
+	return AZSBuildBookDB
+end
+
+function M.saveClass()
+	local db = M.ensureDB()
+	if type(AZSBuildBook_ClassOrder) == "table" and AZSBuildBook_ClassOrder[M.classIdx] then
+		db.lastClass = AZSBuildBook_ClassOrder[M.classIdx]
+	end
+end
+
 function M.detectClass()
 	local z = AZS_ZONE
 	if type(z) == "table" and type(z.class) == "string" and z.class ~= "" then
@@ -86,6 +105,10 @@ function M.detectClass()
 		if type(AZSBuildBook_Builds) == "table" and AZSBuildBook_Builds[c] then
 			return c
 		end
+	end
+	local db = M.ensureDB()
+	if type(db.lastClass) == "string" and type(AZSBuildBook_Builds) == "table" and AZSBuildBook_Builds[db.lastClass] then
+		return db.lastClass
 	end
 	local _, class = UnitClass("player")
 	if class and type(AZSBuildBook_Builds) == "table" and AZSBuildBook_Builds[class] then
@@ -393,6 +416,7 @@ function M.onPrevClass()
 	end
 	M.buildId = nil
 	M.PAGE = 1
+	M.saveClass()
 	M.refresh()
 end
 
@@ -403,6 +427,7 @@ function M.onNextClass()
 	end
 	M.buildId = nil
 	M.PAGE = 1
+	M.saveClass()
 	M.refresh()
 end
 
@@ -450,6 +475,125 @@ function M.onTab(idx)
 	M.refresh()
 end
 
+function M.getPhase()
+	if type(AZS_GetPhase) ~= "function" then
+		return nil
+	end
+	local ok, phase = pcall(AZS_GetPhase)
+	if ok then
+		return phase
+	end
+	return nil
+end
+
+function M.createLauncher()
+	if M.launcher then
+		M.launcher:Show()
+		M.launcher:Raise()
+		return
+	end
+	if not UIParent then
+		return
+	end
+	local C = M.C
+	local btn = CreateFrame("Button", "AZSBuildBookLauncher", UIParent)
+	btn:SetWidth(120)
+	btn:SetHeight(28)
+	-- Top-center: visible in-world ready/playing (not on Bevy Character lobby).
+	btn:SetPoint("TOP", UIParent, "TOP", 0, -12)
+	btn:SetBackdrop(M.roundBackdrop())
+	btn:SetBackdropColor(C.hdr[1], C.hdr[2], C.hdr[3], 0.98)
+	btn:SetBackdropBorderColor(C.brd[1], C.brd[2], C.brd[3], 1)
+	btn:SetFrameStrata("TOOLTIP")
+	btn:SetFrameLevel(10000)
+	btn:EnableMouse(true)
+	btn:RegisterForDrag("LeftButton")
+	btn:SetMovable(true)
+	btn:SetScript("OnDragStart", function()
+		this:StartMoving()
+	end)
+	btn:SetScript("OnDragStop", function()
+		this:StopMovingOrSizing()
+	end)
+	local fs = btn:CreateFontString(nil, "OVERLAY")
+	M.face(fs, 13)
+	fs:SetPoint("CENTER", btn, "CENTER", 0, 0)
+	fs:SetText("Build Guide")
+	fs:SetTextColor(C.gold[1], C.gold[2], C.gold[3])
+	btn.label = fs
+	btn:SetScript("OnEnter", function()
+		local g = M.C.gold
+		this:SetBackdropBorderColor(g[1], g[2], g[3], 1)
+	end)
+	btn:SetScript("OnLeave", function()
+		local b = M.C.brd
+		this:SetBackdropBorderColor(b[1], b[2], b[3], 1)
+	end)
+	btn:SetScript("OnClick", function()
+		M.toggleBook()
+	end)
+	btn:Show()
+	btn:Raise()
+	M.launcher = btn
+end
+
+function M.onPhaseTick()
+	M.createLauncher()
+	M.tryInjectEscMenu()
+	local phase = M.getPhase()
+	if M.launcher then
+		M.launcher:Show()
+		M.launcher:Raise()
+	end
+	-- Auto-open once when entering in-world ready (zone loaded, run not started).
+	if phase == "ready" and not M.openedForReady then
+		M.openedForReady = true
+		M.showBook()
+	elseif phase and phase ~= "ready" then
+		M.openedForReady = nil
+	end
+end
+
+function M.tryInjectEscMenu()
+	if M.escInjected then
+		return
+	end
+	if type(DFRL) ~= "table" or not DFRL.menuframe then
+		return
+	end
+	local menu = DFRL.menuframe
+	local C = M.C
+	local btn = CreateFrame("Button", "AZSBuildBookEscBtn", menu)
+	btn:SetWidth(140)
+	btn:SetHeight(28)
+	btn:SetPoint("TOP", menu, "BOTTOM", 0, -6)
+	btn:SetBackdrop(M.panelBackdrop())
+	btn:SetBackdropColor(C.hdr[1], C.hdr[2], C.hdr[3], 0.95)
+	btn:SetBackdropBorderColor(C.brd[1], C.brd[2], C.brd[3], 1)
+	btn:SetFrameStrata("FULLSCREEN_DIALOG")
+	local fs = btn:CreateFontString(nil, "OVERLAY")
+	M.face(fs, 12)
+	fs:SetPoint("CENTER", btn, "CENTER", 0, 0)
+	fs:SetText("Build Guide")
+	fs:SetTextColor(C.gold[1], C.gold[2], C.gold[3])
+	btn:SetScript("OnEnter", function()
+		local g = M.C.gold
+		this:SetBackdropBorderColor(g[1], g[2], g[3], 1)
+	end)
+	btn:SetScript("OnLeave", function()
+		local b = M.C.brd
+		this:SetBackdropBorderColor(b[1], b[2], b[3], 1)
+	end)
+	btn:SetScript("OnClick", function()
+		if DFRL and DFRL.menuframe then
+			DFRL.menuframe:Hide()
+		end
+		M.showBook()
+	end)
+	M.escBtn = btn
+	M.escInjected = true
+end
+
 function M.createUI()
 	if M.frame and M.frame.ready then
 		return true
@@ -464,7 +608,7 @@ function M.createUI()
 	local f = CreateFrame("Frame", "AZSBuildBookFrame", UIParent)
 	f:SetWidth(M.W)
 	f:SetHeight(M.H)
-	f:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -24, -300)
+	f:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -24, -40)
 	f:SetBackdrop(M.roundBackdrop())
 	f:SetBackdropColor(C.bg[1], C.bg[2], C.bg[3], C.bg[4])
 	f:SetBackdropBorderColor(C.brd[1], C.brd[2], C.brd[3], 1)
@@ -477,7 +621,8 @@ function M.createUI()
 	f:SetScript("OnDragStop", function()
 		this:StopMovingOrSizing()
 	end)
-	f:SetFrameStrata("HIGH")
+	f:SetFrameStrata("TOOLTIP")
+	f:SetFrameLevel(10001)
 	f:Hide()
 
 	if type(UISpecialFrames) == "table" then
@@ -624,6 +769,7 @@ function M.showBook(forceClass)
 	end
 	M.buildId = nil
 	M.PAGE = 1
+	M.saveClass()
 	M.frame:Show()
 	local rok, rerr = pcall(M.refresh)
 	if not rok then
@@ -645,11 +791,22 @@ function M.toggleBook()
 	end
 end
 
+function M.init()
+	if M.inited then
+		return
+	end
+	M.ensureDB()
+	M.createLauncher()
+	M.tryInjectEscMenu()
+	M.inited = true
+end
+
 SLASH_AZSBUILDBOOK1 = "/azsbuild"
 SLASH_AZSBUILDBOOK2 = "/buildbook"
 SLASH_AZSBUILDBOOK3 = "/azsb"
 SlashCmdList["AZSBUILDBOOK"] = function(msg)
 	msg = string.lower(string.gsub(msg or "", "^%s*(.-)%s*$", "%1"))
+	M.init()
 	if msg == "" or msg == "toggle" then
 		M.toggleBook()
 		return
@@ -682,14 +839,43 @@ SlashCmdList["AZSBUILDBOOK"] = function(msg)
 end
 
 local ev = CreateFrame("Frame")
+ev:RegisterEvent("ADDON_LOADED")
 ev:RegisterEvent("PLAYER_LOGIN")
+ev:RegisterEvent("PLAYER_ENTERING_WORLD")
+ev.elapsed = 0
 ev:SetScript("OnEvent", function()
-	if type(AZSBuildBookDB) ~= "table" then
-		AZSBuildBookDB = {}
+	if event == "ADDON_LOADED" then
+		if arg1 ~= M.ADDON then
+			return
+		end
+		M.ensureDB()
+		M.createLauncher()
+		M.tryInjectEscMenu()
+		M.inited = true
+		return
 	end
-	if type(AZSBuildBook_Builds) ~= "table" then
-		M.say("WARNING: Builds.lua missing - guide data unavailable.")
-	else
-		M.say("ready - |cff7cff7c/azsbuild|r")
+	if event == "PLAYER_LOGIN" then
+		M.init()
+		if type(AZSBuildBook_Builds) ~= "table" then
+			M.say("WARNING: Builds.lua missing - guide data unavailable.")
+		else
+			M.say("Build Guide loads in-world (not on Character lobby). Button at top, or /azsbuild")
+		end
+		return
 	end
+	if event == "PLAYER_ENTERING_WORLD" then
+		M.init()
+		M.openedForReady = nil
+		M.onPhaseTick()
+	end
+end)
+
+-- Keep launcher alive; DFRL menu inject; detect ready phase.
+ev:SetScript("OnUpdate", function()
+	this.elapsed = (this.elapsed or 0) + (arg1 or 0.05)
+	if this.elapsed < 0.5 then
+		return
+	end
+	this.elapsed = 0
+	M.onPhaseTick()
 end)

@@ -1,0 +1,818 @@
+{
+  "classOrder": [
+    "WARRIOR",
+    "MAGE",
+    "HUNTER",
+    "WARLOCK",
+    "PALADIN",
+    "PRIEST",
+    "SHAMAN",
+    "ROGUE",
+    "DRUID"
+  ],
+  "builds": {
+    "WARRIOR": {
+      "class": "WARRIOR",
+      "label": "Warrior",
+      "default": "fury",
+      "builds": {
+        "fury": {
+          "id": "fury",
+          "name": "Eternal Whirlwind",
+          "tree": "Fury",
+          "tagline": "Constant spinning. Free Whirlwind forever.",
+          "race": "Orc (Blood Fury) | Tauren | Human",
+          "avoid": "Ignoring pickup range - melee must walk to gems.",
+          "core": [
+            "Flurry - WW / Bloodthirst hit twice (40%)",
+            "Rampage - free Whirlwind every 7 kills",
+            "Bladestorm - start with WW; free WW every 3s"
+          ],
+          "talents": [
+            "5  Cruelty",
+            "5  Booming Voice",
+            "1  Flurry *",
+            "5  Piercing Howl",
+            "5  Blood Craze",
+            "1  Rampage *",
+            "5  Dual Wield Spec",
+            "3  Enrage",
+            "1  Bladestorm *"
+          ],
+          "cards": [
+            "Whirlwind (must - start + free casts)",
+            "Bloodthirst (Flurry double-hit)",
+            "Cleave / Mortal Strike (filler)",
+            "Execute (boss finish)"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band (lifesteal)",
+            "Archimtiros' Ring (HP + DR)",
+            "Earthstrike (damage)",
+            "Talisman of Ephemeral Power (CDR)",
+            "Amulet of the Darkmoon (CDR)"
+          ],
+          "armory": "Dreadnaught Breastplate > Bracers > Thunderfury / Kingsfall",
+          "tip": "Stack area, haste, CDR. After 31 pts: health + CDR."
+        },
+        "protection": {
+          "id": "protection",
+          "name": "Shield Wall",
+          "tree": "Protection",
+          "tagline": "Nearly unkillable. Health-scaling damage.",
+          "race": "Tauren | Orc | Human",
+          "avoid": "Glass-cannon rings before HP is stacked.",
+          "core": [
+            "Shockwave - Shield Slam AoE stun",
+            "Fortified - shields + damage while shielded",
+            "Titan - up to 70% DR; health-scaling damage"
+          ],
+          "talents": [
+            "5  Shield Specialization",
+            "5  Anticipation",
+            "1  Shockwave *",
+            "3  Improved Shield Block",
+            "5  Toughness",
+            "2  Improved Shield Bash",
+            "1  Fortified *",
+            "3  One-Handed Spec",
+            "3  Shield Mastery",
+            "2  Defiance",
+            "1  Titan *"
+          ],
+          "cards": [
+            "Shield Slam (must)",
+            "Thunder Clap / Cleave",
+            "Shield Block / Last Stand"
+          ],
+          "jewelry": [
+            "Heavy Dark Iron Ring (max HP)",
+            "Archimtiros' Ring",
+            "Blooddrinker's Band",
+            "Talvash's Enhancing Necklace (CDR)"
+          ],
+          "armory": "Dreadnaught Breastplate > Bracers > Thunderfury / Kingsfall",
+          "tip": "HP first, then CDR. Slow but safe."
+        }
+      }
+    },
+    "MAGE": {
+      "class": "MAGE",
+      "label": "Mage",
+      "default": "fire",
+      "builds": {
+        "fire": {
+          "id": "fire",
+          "name": "Living Bomb",
+          "tree": "Fire",
+          "tagline": "Crits explode. Kills spread. Easy clear.",
+          "race": "Gnome (CDR) | Troll (Berserking)",
+          "avoid": "Frost talents that don't feed Fireball / Living Bomb.",
+          "core": [
+            "Ignite - Fire crits leave DoT",
+            "Hot Streak - Fireball crit > free Pyroblast",
+            "Living Bomb - start with it; death explosions"
+          ],
+          "talents": [
+            "5  Improved Fireball",
+            "5  Flame Throwing",
+            "1  Ignite *",
+            "2  Burning Soul",
+            "3  Improved Fire Blast",
+            "5  Critical Mass",
+            "1  Hot Streak *",
+            "3  Fire Power",
+            "5  Pyromaniac",
+            "1  Living Bomb *"
+          ],
+          "cards": [
+            "Fireball (must)",
+            "Living Bomb (must - start at 31)",
+            "Pyroblast (Hot Streak free casts)",
+            "Blast Wave / Flamestrike (AoE)"
+          ],
+          "jewelry": [
+            "Master Dragonslayer's Ring (crit)",
+            "Seal of the Damned (DoT tick)",
+            "Talisman of Ephemeral Power (CDR)",
+            "Blooddrinker's Band"
+          ],
+          "armory": "Frostfire Robe > Bindings > Atiesh / Staff of Antonidas",
+          "tip": "After core: Fire damage > CDR > healing."
+        },
+        "frost": {
+          "id": "frost",
+          "name": "Frozen Orb",
+          "tree": "Frost",
+          "tagline": "Orbs + shatter crits. Safer than Fire.",
+          "race": "Gnome | Troll",
+          "avoid": "Standing still in melee packs.",
+          "core": [
+            "Ice Floes - free Frozen Orb every 10 kills",
+            "Shatter - +50% crit vs frozen",
+            "Frozen Orb - start; auto orb every 8s"
+          ],
+          "talents": [
+            "5  Frost Warding",
+            "5  Improved Frostbolt",
+            "1  Ice Floes *",
+            "3  Permafrost",
+            "5  Piercing Ice",
+            "2  Improved Blizzard",
+            "1  Shatter *",
+            "3  Frost Channeling",
+            "3  Arctic Reach",
+            "2  Winter's Chill",
+            "1  Frozen Orb *"
+          ],
+          "cards": [
+            "Frostbolt / Ice Lance",
+            "Frozen Orb (must)",
+            "Blizzard / Cone of Cold",
+            "Ice Barrier (survival)"
+          ],
+          "jewelry": [
+            "Master Dragonslayer's Ring",
+            "Talisman of Ephemeral Power",
+            "Archimtiros' Ring",
+            "Amulet of the Darkmoon"
+          ],
+          "armory": "Frostfire Robe > Bindings > Atiesh",
+          "tip": "Keep orbs rolling; kite with slows."
+        }
+      }
+    },
+    "HUNTER": {
+      "class": "HUNTER",
+      "label": "Hunter",
+      "default": "marksmanship",
+      "builds": {
+        "marksmanship": {
+          "id": "marksmanship",
+          "name": "Trick Shots",
+          "tree": "Marksmanship",
+          "tagline": "Multi-Shot forever. Best beginner clear.",
+          "race": "Night Elf | Troll | Orc",
+          "avoid": "Melee-only cards; stay at range.",
+          "core": [
+            "Barrage - Multi-Shot +2 targets",
+            "Rapid Killing - free Multi every 8 kills",
+            "Trick Shots - start Multi; free every 3s"
+          ],
+          "talents": [
+            "5  Improved Aspect of the Hawk",
+            "5  Efficiency",
+            "1  Barrage *",
+            "5  Lethal Shots",
+            "5  Mortal Shots",
+            "1  Rapid Killing *",
+            "5  Ranged Weapon Spec",
+            "3  Improved Arcane Shot",
+            "1  Trick Shots *"
+          ],
+          "cards": [
+            "Multi-Shot (must)",
+            "Arcane Shot / Aimed Shot",
+            "Serpent Sting (filler)",
+            "Feign Death (panic)"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Earthstrike",
+            "Talisman of Ephemeral Power",
+            "Amulet of the Darkmoon"
+          ],
+          "armory": "Cryptstalker Tunic > Wristguards > Rhok'delar / Ashjre'thul",
+          "tip": "Upgrade Multi-Shot first. Then CDR + lifesteal."
+        },
+        "survival": {
+          "id": "survival",
+          "name": "Explosive Trap",
+          "tree": "Survival",
+          "tagline": "Trap detonations. High skill, high clear.",
+          "race": "Troll | Night Elf",
+          "avoid": "Standing on your own traps.",
+          "core": [
+            "Entrapment - traps root",
+            "Wyvern Sting - Multi applies sting > free trap",
+            "Explosive Trap - start; auto trap every 8s"
+          ],
+          "talents": [
+            "5  Monster Slaying",
+            "5  Humanoid Slaying",
+            "1  Entrapment *",
+            "3  Savage Strikes",
+            "5  Survivalist",
+            "2  Surefooted",
+            "1  Wyvern Sting *",
+            "3  Killer Instinct",
+            "3  Counterattack",
+            "2  Lightning Reflexes",
+            "1  Explosive Trap *"
+          ],
+          "cards": [
+            "Explosive Trap / Immolation Trap (must)",
+            "Multi-Shot",
+            "Concussive Shot"
+          ],
+          "jewelry": [
+            "Seal of the Damned",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power"
+          ],
+          "armory": "Cryptstalker set > Rhok'delar",
+          "tip": "Pull packs into traps. CDR on traps."
+        }
+      }
+    },
+    "WARLOCK": {
+      "class": "WARLOCK",
+      "label": "Warlock",
+      "default": "affliction",
+      "builds": {
+        "affliction": {
+          "id": "affliction",
+          "name": "Seed of Corruption",
+          "tree": "Affliction",
+          "tagline": "Dots explode and jump. Screen melts.",
+          "race": "Orc | Undead | Gnome",
+          "avoid": "Dropping dots - uptime is everything.",
+          "core": [
+            "Shadow Embrace - dots + shadow damage",
+            "Pandemic - dots jump on death",
+            "Seed of Corruption - start; free every 4s"
+          ],
+          "talents": [
+            "5  Suppression",
+            "5  Improved Corruption",
+            "1  Shadow Embrace *",
+            "2  Improved Life Tap",
+            "3  Improved Curse of Agony",
+            "5  Fel Concentration",
+            "1  Pandemic *",
+            "5  Shadow Mastery",
+            "3  Contagion",
+            "1  Seed of Corruption *"
+          ],
+          "cards": [
+            "Corruption / Curse of Agony (must)",
+            "Seed of Corruption (must)",
+            "Shadow Bolt (filler)",
+            "Drain Life (heal)"
+          ],
+          "jewelry": [
+            "Seal of the Damned (DoT)",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power",
+            "Amulet of the Darkmoon"
+          ],
+          "armory": "Plagueheart Robe > Bindings > Atiesh / Benediction",
+          "tip": "DoT duration + CDR. Seed clears packs."
+        },
+        "destruction": {
+          "id": "destruction",
+          "name": "Chaos Bolt",
+          "tree": "Destruction",
+          "tagline": "Crit nukes. Burstier, glassier.",
+          "race": "Orc | Gnome",
+          "avoid": "No self-heal plan before boss fights.",
+          "core": [
+            "Devastation - more crit",
+            "Backlash - free Shadow Bolt on crit",
+            "Chaos Bolt - start; piercing nuke"
+          ],
+          "talents": [
+            "5  Improved Shadow Bolt",
+            "5  Cataclysm",
+            "1  Devastation *",
+            "5  Bane",
+            "5  Intensity",
+            "1  Backlash *",
+            "5  Ruin",
+            "3  Emberstorm",
+            "1  Chaos Bolt *"
+          ],
+          "cards": [
+            "Shadow Bolt / Immolate",
+            "Chaos Bolt / Conflagrate",
+            "Rain of Fire / Hellfire"
+          ],
+          "jewelry": [
+            "Master Dragonslayer's Ring",
+            "Earthstrike",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power"
+          ],
+          "armory": "Plagueheart > Atiesh",
+          "tip": "Crit + CDR. Add healing jewelry."
+        }
+      }
+    },
+    "PALADIN": {
+      "class": "PALADIN",
+      "label": "Paladin",
+      "default": "protection",
+      "builds": {
+        "protection": {
+          "id": "protection",
+          "name": "Shield Bastion",
+          "tree": "Protection",
+          "tagline": "Hardest class to kill. Shields > damage.",
+          "race": "Dwarf (Stoneform) | Human",
+          "avoid": "Kiting far away - damage is under your feet.",
+          "core": [
+            "Hallowed Ground - HoJ > free Consecration",
+            "Ardent Defender - start HoJ; shields = +dmg",
+            "Hammer of the Righteous - HP > damage"
+          ],
+          "talents": [
+            "5  Improved Devotion Aura",
+            "5  Redoubt",
+            "1  Hallowed Ground *",
+            "3  Improved Consecration",
+            "3  Spiritual Attunement",
+            "3  Weighted Hammer",
+            "1  Ardent Defender *",
+            "3  Improved Hammer of Justice",
+            "3  Blessed Life",
+            "1  Divine Intervention",
+            "2  Sacred Duty",
+            "1  Hammer of the Righteous *"
+          ],
+          "cards": [
+            "Hammer of Justice (must)",
+            "Consecration (must)",
+            "Holy Shield",
+            "Divine Shield (panic)"
+          ],
+          "jewelry": [
+            "Heavy Dark Iron Ring (HP)",
+            "Blooddrinker's Band",
+            "Horn of the Warchief",
+            "Talvash's Enhancing Necklace (CDR)"
+          ],
+          "armory": "Redemption Breastplate > Bracers > Ashbringer",
+          "tip": "Keep HoJ hitting. HP + CDR after 31."
+        },
+        "retribution": {
+          "id": "retribution",
+          "name": "Exorcism Crit",
+          "tree": "Retribution",
+          "tagline": "Crits spawn Exorcism. More damage, still sturdy.",
+          "race": "Human | Dwarf",
+          "avoid": "Skipping healing when health dips.",
+          "core": [
+            "Seal of Command - Judgement cleaves",
+            "The Art of War - crit > free Exorcism",
+            "Divine Storm - Exorcism AoE splash"
+          ],
+          "talents": [
+            "5  Benediction",
+            "5  Deflection",
+            "1  Seal of Command *",
+            "3  Improved Judgement",
+            "2  Pursuit of Justice",
+            "5  Conviction",
+            "1  The Art of War *",
+            "3  Sanctity Aura",
+            "3  Vindication",
+            "2  Improved Blessing of Might",
+            "1  Divine Storm *"
+          ],
+          "cards": [
+            "Judgement (must early)",
+            "Exorcism (must late)",
+            "Holy Light (heal)"
+          ],
+          "jewelry": [
+            "Master Dragonslayer's Ring (crit)",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power"
+          ],
+          "armory": "Redemption > Ashbringer",
+          "tip": "Crit + Holy damage. Heal if needed."
+        }
+      }
+    },
+    "PRIEST": {
+      "class": "PRIEST",
+      "label": "Priest",
+      "default": "shadow",
+      "builds": {
+        "shadow": {
+          "id": "shadow",
+          "name": "Shadow Pain Spread",
+          "tree": "Shadow",
+          "tagline": "Pain jumps corpse to corpse. Safe & strong.",
+          "race": "Undead | Dwarf | Human",
+          "avoid": "Expecting fast early clears - slow burn.",
+          "core": [
+            "Shadow Weaving - % max HP shadow hits",
+            "Shadowy Apparitions - SW:P > free Mind Blast",
+            "Shadowform - death explode + spread SW:P"
+          ],
+          "talents": [
+            "5  Spirit Tap",
+            "2  Improved Shadow Word: Pain",
+            "5  Shadow Focus",
+            "1  Shadow Weaving *",
+            "5  Improved Mind Blast",
+            "5  Darkness",
+            "1  Shadowy Apparitions *",
+            "1  Blackout",
+            "3  Improved Vampiric Embrace",
+            "2  Shadow Power",
+            "1  Shadowform *"
+          ],
+          "cards": [
+            "Shadow Word: Pain (must)",
+            "Mind Blast",
+            "Power Word: Shield (pressure)",
+            "Mind Flay / Shadowform"
+          ],
+          "jewelry": [
+            "Seal of the Damned",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power"
+          ],
+          "armory": "Robes of Faith > Bindings > Anathema",
+          "tip": "Keep SW:P up. Heal/shield on bosses."
+        },
+        "discipline": {
+          "id": "discipline",
+          "name": "Shield Sustain",
+          "tree": "Discipline",
+          "tagline": "Shields break for damage. Hardest to kill.",
+          "race": "Undead | Dwarf",
+          "avoid": "All-damage picks while shield gaps are long.",
+          "core": [
+            "Divine Aegis - start PW:S; break = AoE",
+            "Rapture - reapply shield on break (15s)",
+            "Penance - free bolts every ~3s"
+          ],
+          "talents": [
+            "5  Unbreakable Will",
+            "5  Wand Specialization",
+            "1  Divine Aegis *",
+            "3  Improved Power Word: Shield",
+            "5  Mental Agility",
+            "3  Meditation",
+            "1  Rapture *",
+            "5  Martyrdom",
+            "2  Mental Strength",
+            "1  Penance *"
+          ],
+          "cards": [
+            "Power Word: Shield (must)",
+            "Smite",
+            "Penance"
+          ],
+          "jewelry": [
+            "Heavy Dark Iron Ring",
+            "Blooddrinker's Band",
+            "Talisman of Ephemeral Power",
+            "Star of Mystaria"
+          ],
+          "armory": "Robes of Faith > Anathema",
+          "tip": "Move during shield gaps. HP + heal."
+        }
+      }
+    },
+    "SHAMAN": {
+      "class": "SHAMAN",
+      "label": "Shaman",
+      "default": "elemental",
+      "builds": {
+        "elemental": {
+          "id": "elemental",
+          "name": "Storm Chain",
+          "tree": "Elemental",
+          "tagline": "More enemies = more bounces. Scales with chaos.",
+          "race": "Troll (Berserking) | Tauren | Orc",
+          "avoid": "Splitting lightning / totems / wolves - pick one.",
+          "core": [
+            "Lightning Overload - LB/CL free recast 40%",
+            "Elemental Fury - CL +3 jumps, no falloff",
+            "Elemental Mastery - start CL; free every 3s"
+          ],
+          "talents": [
+            "5  Convection",
+            "5  Concussion",
+            "1  Lightning Overload *",
+            "3  Elemental Warding",
+            "1  Reverberation",
+            "5  Call of Thunder",
+            "1  Elemental Fury *",
+            "5  Lightning Mastery",
+            "2  Storm Reach",
+            "2  Elemental Devastation",
+            "1  Elemental Mastery *"
+          ],
+          "cards": [
+            "Chain Lightning (must)",
+            "Lightning Bolt (early)",
+            "Earth Shock / Frost Shock"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Talisman of Ephemeral Power",
+            "Talvash's Enhancing Necklace"
+          ],
+          "armory": "Earthshatter Breastplate > Bracers > Doomhammer",
+          "tip": "Upgrade CL hard. Then heal + DR."
+        },
+        "restoration": {
+          "id": "restoration",
+          "name": "Magma Totem",
+          "tree": "Restoration",
+          "tagline": "Paired totems. Pull packs into the fire.",
+          "race": "Tauren | Troll",
+          "avoid": "Fighting outside totem range.",
+          "core": [
+            "Call of the Elements - double totems",
+            "Reincarnation - death save",
+            "Totemic Wrath - start Magma; free Searing"
+          ],
+          "talents": [
+            "5  Tidal Focus",
+            "5  Totemic Focus",
+            "1  Call of the Elements *",
+            "3  Restorative Totems",
+            "3  Nature's Guidance",
+            "5  Tidal Mastery",
+            "1  Reincarnation *",
+            "2  Purification",
+            "3  Totemic Mastery",
+            "2  Ancestral Healing",
+            "1  Totemic Wrath *"
+          ],
+          "cards": [
+            "Magma Totem (must)",
+            "Searing Totem",
+            "Healing Wave"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Talisman of Ephemeral Power",
+            "Amulet of the Darkmoon"
+          ],
+          "armory": "Earthshatter > Doomhammer",
+          "tip": "Park bosses in totems. Heal between hits."
+        }
+      }
+    },
+    "ROGUE": {
+      "class": "ROGUE",
+      "label": "Rogue",
+      "default": "assassination",
+      "builds": {
+        "assassination": {
+          "id": "assassination",
+          "name": "Spreading Poison",
+          "tree": "Assassination",
+          "tagline": "Poison kills explode. Best Rogue clear.",
+          "race": "Troll | Undead",
+          "avoid": "Letting DoTs drop on elites.",
+          "core": [
+            "Deadly Poison - strikes apply poison DoT",
+            "Mutilate - SS/Backstab second hit",
+            "Toxic Bloom - poison/bleed kills explode"
+          ],
+          "talents": [
+            "5  Malice",
+            "5  Murder",
+            "1  Deadly Poison *",
+            "5  Lethality",
+            "5  Vile Poisons",
+            "1  Mutilate *",
+            "3  Seal Fate",
+            "3  Vigor",
+            "2  Remorseless Attacks",
+            "1  Toxic Bloom *"
+          ],
+          "cards": [
+            "Sinister Strike / Backstab (must)",
+            "Rupture (Toxic Bloom)",
+            "Eviscerate",
+            "Poison / Instant Poison"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Hand of Justice",
+            "Woven Ivy Necklace"
+          ],
+          "armory": "Bonescythe Chest > Bracers > Thunderfury / Kingsfall",
+          "tip": "Keep poison up. DoT + crit after 31."
+        },
+        "combat": {
+          "id": "combat",
+          "name": "Sweeping Strikes",
+          "tree": "Combat",
+          "tagline": "Blade Flurry cleave. Simple melee loop.",
+          "race": "Night Elf | Undead",
+          "avoid": "No lifesteal - you will melt.",
+          "core": [
+            "Blade Flurry - SS/Evis +2 targets",
+            "Adrenaline Rush - free every 20 kills",
+            "Killing Spree - free SS every 3s"
+          ],
+          "talents": [
+            "5  Lightning Reflexes",
+            "5  Precision",
+            "1  Blade Flurry *",
+            "5  Endurance",
+            "5  Sword Specialization",
+            "1  Adrenaline Rush *",
+            "3  Aggression",
+            "3  Improved Sinister Strike",
+            "2  Weapon Expertise",
+            "1  Killing Spree *"
+          ],
+          "cards": [
+            "Sinister Strike (must)",
+            "Eviscerate",
+            "Adrenaline Rush"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Earthstrike",
+            "Star of Mystaria"
+          ],
+          "armory": "Bonescythe > Thunderfury",
+          "tip": "Lifesteal + DR before more damage."
+        },
+        "subtlety": {
+          "id": "subtlety",
+          "name": "Shadow Splash",
+          "tree": "Subtlety",
+          "tagline": "Cheat Death + Gouge control + Backstab splash.",
+          "race": "Night Elf | Undead",
+          "avoid": "Ignoring Cheat Death - leave danger after it procs.",
+          "core": [
+            "Cheat Death - lethal > 25% HP + immunity",
+            "Preparation - auto Gouge every 6s",
+            "Shadow Dance - Backstab/Evis splash"
+          ],
+          "talents": [
+            "5  Opportunity",
+            "5  Master of Deception",
+            "1  Cheat Death *",
+            "3  Improved Ambush",
+            "3  Elusiveness",
+            "3  Setup",
+            "1  Preparation *",
+            "3  Dirty Deeds",
+            "1  Initiative",
+            "2  Heightened Senses",
+            "3  Deadliness",
+            "1  Shadow Dance *"
+          ],
+          "cards": [
+            "Backstab (must)",
+            "Eviscerate",
+            "Gouge / Kidney Shot"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Master Dragonslayer's Ring",
+            "Talvash's Enhancing Necklace"
+          ],
+          "armory": "Bonescythe > Thunderfury",
+          "tip": "Control > reposition > Backstab."
+        }
+      }
+    },
+    "DRUID": {
+      "class": "DRUID",
+      "label": "Druid",
+      "default": "balance",
+      "builds": {
+        "balance": {
+          "id": "balance",
+          "name": "Starfall",
+          "tree": "Balance",
+          "tagline": "Stars rain. Treants tank. Relaxed clear.",
+          "race": "Night Elf | Tauren",
+          "avoid": "Mixing caster + Bear/Cat talents in one run.",
+          "core": [
+            "Omen of Clarity - casts > free Starfire",
+            "Starfall - auto Starfire every 4s",
+            "Force of Nature - treants + start Moonfire"
+          ],
+          "talents": [
+            "5  Improved Wrath",
+            "5  Natural Weapons",
+            "1  Omen of Clarity *",
+            "3  Nature's Grasp",
+            "1  Improved Moonfire",
+            "3  Moonglow",
+            "3  Improved Starfire",
+            "1  Starfall *",
+            "3  Gale Winds",
+            "5  Moonfury",
+            "1  Force of Nature *"
+          ],
+          "cards": [
+            "Starfire (must)",
+            "Moonfire",
+            "Wrath (early)",
+            "Hurricane (packs)"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Talisman of Ephemeral Power",
+            "Amulet of the Darkmoon"
+          ],
+          "armory": "Dreamwalker Chest > Bracers > Atiesh",
+          "tip": "Starfire upgrades first. Then HP + heal."
+        },
+        "feral": {
+          "id": "feral",
+          "name": "Bear-Form Healing",
+          "tree": "Feral",
+          "tagline": "Swipe heals you. Tanky melee clear.",
+          "race": "Tauren | Night Elf",
+          "avoid": "Ranged-only cards while in Bear.",
+          "core": [
+            "Rake - HP + DR; start Swipe/Shred + bleeds",
+            "Blood Frenzy - crits apply big bleed",
+            "Dire Bear Form - free Swipe every 3s + heal"
+          ],
+          "talents": [
+            "5  Ferocity",
+            "5  Feral Aggression",
+            "1  Rake *",
+            "3  Sharpened Claws",
+            "3  Feral Instinct",
+            "3  Predatory Strikes",
+            "1  Blood Frenzy *",
+            "3  Thick Hide",
+            "3  Savage Fury",
+            "2  Primal Fury",
+            "1  Enrage",
+            "1  Dire Bear Form *"
+          ],
+          "cards": [
+            "Swipe (must)",
+            "Shred",
+            "Starfire (optional ranged)"
+          ],
+          "jewelry": [
+            "Blooddrinker's Band",
+            "Archimtiros' Ring",
+            "Master Dragonslayer's Ring",
+            "Star of Mystaria"
+          ],
+          "armory": "Dreamwalker > Atiesh",
+          "tip": "HP + DR, then Swipe / bleeds."
+        }
+      }
+    }
+  }
+}
